@@ -1,0 +1,39 @@
+#!/bin/bash
+#this is proper way for shell scripting header
+
+LOG_DIR = /var/log
+ROOT_UID = 0
+#variables are better than hardcoded values 
+cd $LOG_DIR
+
+#try if loop with comparing UID is not equal to root_uid
+#if [ uid != root_uid ]  this also acceptable 
+if [ "$UID" -ne "$ROOT_UID" ]
+then
+  echo "Must be root to perform this operation."
+fi
+
+#try if loop if present (non-empty)
+if [ -n "$1" ]
+then 
+   lines = $1
+else
+   lines = $LINES
+fi
+
+#try for loop 
+
+for number in  {1..99..2}
+do 		
+  echo $number
+done
+
+#reading inputs from command line
+read name  //reads the first command line argument
+echo "Welcome $name"
+
+cat /dev/null > messages
+
+echo "Logs cleaned up."
+
+exit #the right proper method to exiting a script 
